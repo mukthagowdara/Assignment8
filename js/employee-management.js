@@ -1,9 +1,9 @@
 /*eslint-env browser*/
 
 var employeeList = [["Martin Berg", "Staff Engineer", 25134], ["Joe Dawson", "Regional VP", 81112], ["Coco Luther", "Marketing Head", 29197], ["Giovanni Lee", "IT Head", 78335], ["Shekhar Rao", "Systems Engineer", 45105]];
-var count = 0;
+var i, count = 0;
+var countRows = 5;
 var deleteFlag = false;
-var addFlag = false;
 
 var $ = function (id) {
     "use strict";
@@ -16,6 +16,8 @@ var deleteEmployee = function (e) {
     if (deleteFlag) {
         window.console.log(e.target.parentElement.parentElement.rowIndex);
         $("employee_data").deleteRow(e.target.parentElement.parentElement.rowIndex);
+        countRows -= 1;
+        $("employee_header").innerHTML = "Showing " + countRows + " Employees\n";
     }
 };
 
@@ -43,9 +45,10 @@ function display(tableData) {
         row.appendChild(buttontd);
         tableBody.appendChild(row);
         
-        
     });
     table.appendChild(tableBody);
+    $("employee_header").innerHTML = "Showing " + countRows + " Employees\n";
+    
     if (deleteFlag) {
         $(count).addEventListener("click", deleteEmployee);
     }
@@ -53,7 +56,7 @@ function display(tableData) {
 
 var addEmployees = function () {
     "use strict";
-    var html, name, title, extension, required1, required2, required3, generic1, generic2, generic3, nameErr, titleErr, extErr, tempArray, i, res;
+    var name, title, extension, required1, required2, required3, generic1, generic2, generic3, nameErr, titleErr, extErr, tempArray, res;
     tempArray = new Array(3);
     res = true;
     
@@ -101,7 +104,7 @@ var addEmployees = function () {
     }
     tempArray = [tempArray];
     if (res === true) {
-        addFlag = true;
+        countRows += 1;
         display(tempArray);
     }
 };
@@ -111,11 +114,9 @@ window.addEventListener("load", function () {
     "use strict";
     display(employeeList);
     $("addEntry").addEventListener("click", addEmployees);
-    $(1).addEventListener("click", deleteEmployee);
-    $(2).addEventListener("click", deleteEmployee);
-    $(3).addEventListener("click", deleteEmployee);
-    $(4).addEventListener("click", deleteEmployee);
-    $(5).addEventListener("click", deleteEmployee);
+    for (i = 1; i <= 5; i += 1) {
+        $(i).addEventListener("click", deleteEmployee);
+    }
     deleteFlag = true;
 });
 
