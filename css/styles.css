@@ -1,0 +1,58 @@
+body {
+    font-family: sans-serif;
+    width: 730px;
+}
+
+input[type="text"] {
+    width: 15em;
+    margin-bottom: 1em;
+    border-color: lightskyblue;
+}
+
+/*#add {
+    margin-top:20px;
+    background-color: deepskyblue;
+    color: aliceblue;
+    float: right;
+    clear: right;
+}*/
+
+input[type="button"] {
+    margin-top:20px;
+    background-color: deepskyblue;
+    color: aliceblue;
+    display: block;
+    margin: auto;
+    
+}
+
+span {
+    color: red;
+    font-size: 12px;
+}
+td {
+	width: 10em;	
+    border: 1px solid #ddd;
+}
+
+#employee_data {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#employee_data td, #employee_data th {
+  border: 1px solid #ddd;
+  padding: 8px;
+} 
+
+#employee_data tr:nth-child(even){background-color: aliceblue;}
+
+#employee_data tr:hover {background-color: skyblue;}
+
+#employee_data th {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: left;
+  background-color: lightskyblue;
+  color: white;
+}
